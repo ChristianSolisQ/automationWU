@@ -1,3 +1,3 @@
 # automationWU
 
-Favor cambiar el chromeDriver a la version del navegador en la carpeta resources
+Please change the chromeDriver to the version of your navigator in the folder resources in the root of the project
