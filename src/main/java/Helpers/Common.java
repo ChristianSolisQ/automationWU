@@ -1,10 +1,6 @@
 package Helpers;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -43,30 +39,42 @@ public class Common {
         try{
             driver.findElement(element).click();
             System.out.println("The element was be clicked was: " + element );
-
         }catch(NoSuchElementException exception){
-            //Assert.fail("Can't click the element: " + element + ". Error msg:" + exception.getMessage());
             System.err.println("Can't click the element: " + element + ". Error msg:" + exception.getMessage());
+        }
+    }
+    /**
+     *setTextWithEnter
+     * @param element the element to be written
+     * @param text the text to be written in the text field
+     **/
+    public void setTextWithEnter(By element, String text){
+        try{
+            driver.findElement(element).sendKeys(text);
+            driver.findElement(element).sendKeys(Keys.ENTER);
+            System.out.println("The element to be written is: " + element + " with the text: " + text);
+        }catch(NoSuchElementException exception){
+            System.err.println("Can't write in the element: " + element + ". Error msg:" + exception.getMessage());
         }
     }
 
     /**
-    * scrollToButton
-    * @param element the element to be clicked
+     *getText
+     * @param element the element to be written
      **/
-    public void scrollToButton(By element){
-        WebElement webElement;
+    public String getText(By element){
+        String text;
         try{
-            webElement = driver.findElement(element);
-            Actions actions = new Actions(driver);
-            actions.moveToElement(webElement);
-            actions.click();
-            System.out.println("The element was be clicked was: " + element );
+            text = driver.findElement(element).getText();
+            System.out.println("The element to be select is: " + element + " with the text: " + text);
         }catch(NoSuchElementException exception){
-           // Assert.fail("Can't click the element: " + element + ". Error msg:" + exception.getMessage());
-            System.err.println("Can't click the element: " + element + ". Error msg:" + exception.getMessage());
+            System.err.println("Can't write in the element: " + element + ". Error msg:" + exception.getMessage());
+            text = " ";
         }
+        return text;
     }
+
+
     /**
     * waitForElementImplicit
     * @param time to be wait in seconds
@@ -103,21 +111,10 @@ public class Common {
         try{
             webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(element));
         }catch (Exception exception){
-            //Assert.fail("Can't wait for: " + time + " seconds. Error msg:" + exception.getMessage());
             System.err.println("Can't wait for: " + time + " seconds. Error msg:" + exception.getMessage());
         }
     }
-    /**
-     * Sleep
-     * @param time to be waiting
-     */
-public void sleep(int time){
-    try{
-        Thread.sleep(time * 1000);
-    }catch(Exception exception){
-        System.err.println("Can't wait for: " + time + " seconds. Error msg:" + exception.getMessage());
-    }
-}
+
 
     /**
      * selectDropDownList
@@ -133,5 +130,17 @@ public void sleep(int time){
             System.err.println("Can't select the element: " + element + ". Error msg:" + exception.getMessage());
         }
     }
-
+    /**
+     *
+     */
+    public void switchToFrame(By element){
+        WebElement iframe;
+        try{
+            iframe = driver.findElement(element);
+            driver.switchTo().frame(iframe);
+            System.out.println("The element to of the iframe is: " + element );
+        }catch(NoSuchElementException exception){
+            System.err.println("Can't write in the element: " + element + ". Error msg:" + exception.getMessage());
+        }
+    }
 }

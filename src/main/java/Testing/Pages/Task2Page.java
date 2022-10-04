@@ -4,14 +4,14 @@ import Helpers.Common;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Task1Page {
+public class Task2Page {
     private final Common common;
     private final By btnHamburguerMenu = By.cssSelector(".wu-icon.wu-icon-heading__xl.icon-0124_menu.action-light");
-    private final By btnSettings = By.xpath("//span[contains(@class,'white-space-nowrap nav-item__title')][normalize-space()='Settings']");
-    private final By ddlCountry = By.cssSelector("#Question");
-    private final By btnYesConfirmation = By.cssSelector("button[ng-click='redirect();'] translate[class='ng-scope']");
+    private final By btnFindLocations = By.xpath("//li[contains(@class,'nav-item d-block d-XL-none')]//span[contains(@class,'white-space-nowrap nav-item__title')][normalize-space()='Find locations']");
 
-    public Task1Page(WebDriver driver) {
+
+
+    public Task2Page(WebDriver driver) {
         this.common = new Common(driver);
     }
 
@@ -35,26 +35,13 @@ public class Task1Page {
         }
     }
 
-    public void goToSettingsMenu(){
+    public void goToFindLocationsMenu(){
         try{
-            common.waitForElementExplicitVisible(btnSettings, 20);
-            common.click(btnSettings);
+            common.waitForElementExplicitVisible(btnFindLocations, 20);
+            common.click(btnFindLocations);
             common.waitForElementImplicit(10);
         }catch (Exception exception){
             System.err.println(exception.getMessage());
         }
     }
-    public void changeCountry(String value){
-        try{
-            common.waitForElementImplicit(10);
-            common.selectDropDownList(ddlCountry,value);
-            common.waitForElementImplicit(10);
-            common.click(btnYesConfirmation);
-        }catch (Exception exception){
-            System.err.println(exception.getMessage());
-        }
-    }
-
-
-
 }
