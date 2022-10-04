@@ -29,7 +29,7 @@ public class Task2PageSteps extends DriverClass {
     public void navigation_to_https_www_westernunion_com_lt_en_home_html() {
         String url = "https://www.westernunion.com/lt/en/home.html";
         task2Page = new Task2Page(driver);
-        task2Page.goToWesterUnionPage(url);
+        task2Page.goToWesternUnionPage(url);
     }
     @When("It expands Burger menu")
     public void it_expands_burger_menu() {

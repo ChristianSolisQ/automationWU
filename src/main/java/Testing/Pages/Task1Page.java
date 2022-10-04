@@ -15,7 +15,7 @@ public class Task1Page {
         this.common = new Common(driver);
     }
 
-    public void goToWesterUnionPage(String url){
+    public void goToWesternUnionPage(String url){
         try{
             common.getUrl(url);
             common.waitForElementImplicit(10);

@@ -33,7 +33,7 @@ public class Task1PageSteps extends DriverClass {
     public void navigate_to_https_www_westernunion_com_lt_en_home_html() {
         String url = "https://www.westernunion.com/lt/en/home.html";
         task1Page = new Task1Page(driver);
-        task1Page.goToWesterUnionPage(url);
+        task1Page.goToWesternUnionPage(url);
     }
 
     @When("Expand Burger menu")
